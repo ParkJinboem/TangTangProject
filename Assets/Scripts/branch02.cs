@@ -8,7 +8,6 @@ public class branch02 : MonoBehaviour
     void Start()
     {
         Debug.Log("Branch02_branch : branch01");
-        Debug.Log("Branch02_branch : mainbranch");
     }
 
     // Update is called once per frame
