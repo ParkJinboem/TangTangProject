@@ -11,7 +11,7 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
 
     float joystickRadius;
     Vector2 touchPos;
-    Vector2 moveDir;
+    Vector2 _moveDir;
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +41,17 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     public void OnPointerUp(PointerEventData eventData)
     {
         handler.transform.position = touchPos;
-        moveDir = Vector2.zero;
+        _moveDir = Vector2.zero;
+        Managers.Game.MoveDir = _moveDir;
 
     }
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 touchDir = (eventData.position - touchPos);
         float moveDist = Mathf.Min(touchDir.magnitude, joystickRadius);
-        moveDir = touchDir.normalized;
-        Vector2 newPos = touchPos + moveDir * moveDist;
+        _moveDir = touchDir.normalized;
+        Vector2 newPos = touchPos + _moveDir * moveDist;
         handler.transform.position = newPos;
+        Managers.Game.MoveDir = _moveDir;
     }
 }
