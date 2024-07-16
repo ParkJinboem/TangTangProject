@@ -46,7 +46,8 @@ public class ProjectileController : SkillController
         if(this.IsValid() == false)
         {
             return;
-        } 
+        }
+
 
         mc.OnDamaged(_owner, SkillData.damage);
         StopDestroy();

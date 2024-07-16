@@ -97,8 +97,6 @@ public class PlayerController : CreatureController
 
         base.OnDamaged(attacker, damage);
 
-        Debug.Log($"OnDamaged ! {Hp}");
-
         // TEMP
         CreatureController cc = attacker as CreatureController;
         cc?.OnDamaged(this, 10000);
