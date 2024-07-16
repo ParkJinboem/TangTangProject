@@ -39,17 +39,13 @@ public class ProjectileController : SkillController
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MonsterController mc = collision.gameObject.GetComponent<MonsterController>();
-        if(mc.IsValid() == false)
-        {
+        if (mc.IsValid() == false)
             return;
-        }
-        if(this.IsValid() == false)
-        {
+        if (this.IsValid() == false)
             return;
-        }
-
 
         mc.OnDamaged(_owner, SkillData.damage);
+
         StopDestroy();
 
         Managers.Object.Despawn(this);

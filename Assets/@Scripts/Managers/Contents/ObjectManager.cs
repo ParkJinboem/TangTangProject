@@ -63,6 +63,8 @@ public class ObjectManager
             ProjectileController pc = go.GetOrAddComponent<ProjectileController>();
             Projectiles.Add(pc);
             pc.Init();
+
+            return pc as T;
         }
         return null;
     }

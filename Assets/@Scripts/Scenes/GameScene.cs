@@ -55,6 +55,7 @@ public class GameScene : MonoBehaviour
 
     void StartLoaded()
     {
+        Managers.Data.Init();
         //SpawningPool Component를 추가하여 Start문에서 오브젝트를 생성하도록 실행
         _spawningPool = gameObject.AddComponent<SpawningPool>();
         PlayerController player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
@@ -70,9 +71,6 @@ public class GameScene : MonoBehaviour
         GameObject map = Managers.Resource.Instantiate("Map.prefab");
         map.name = "@Map";
         Camera.main.GetComponent<CameraController>().target = player.gameObject;
-
-        //Data Test
-        Managers.Data.Init();
 
         foreach(var playerData in Managers.Data.PlayerDic.Values)
         {
