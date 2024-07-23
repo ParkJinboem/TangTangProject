@@ -83,6 +83,5 @@ public class GridController : BaseController
         }
 
         return objects;
-
     }
 }

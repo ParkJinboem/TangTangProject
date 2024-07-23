@@ -47,6 +47,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
+  - m_GUID: 33449f1bb0666cf45887d936d51f8989
+    m_Address: Fireball.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 21a062ece2e36cb419dc67ce3fb7bb8d, type: 2}
   m_SchemaSet:

@@ -22,6 +22,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
+  - m_GUID: a569775bc2240e7429c1b7bde63fcd0d
+    m_Address: UI_SkillSelectPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+  - m_GUID: 81cb93d63e4e52b48a020a59e04e6610
+    m_Address: UI_SkillCardItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+  - m_GUID: f20a05ae89591ae42828461fd2ce4ef5
+    m_Address: UI_GameScene.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 21a062ece2e36cb419dc67ce3fb7bb8d, type: 2}
   m_SchemaSet:

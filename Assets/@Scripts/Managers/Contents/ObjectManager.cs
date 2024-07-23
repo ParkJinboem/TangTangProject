@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -28,13 +29,28 @@ public class ObjectManager
         }
         else if (type == typeof(MonsterController))
         {
-            string name = (templateID == 0 ? "Goblin_01" : "Snake_01");
+            string name = "";
+
+            switch(templateID)
+            {
+                case Define.GOBLIN_ID:
+                    name = "Goblin_01";
+                    break;
+                case Define.SNAKE_ID:
+                    name = "Snake_01";
+                    break;
+                case Define.BOSS_ID:
+                    name = "Boss_01";
+                    break;
+            }
+
             GameObject go = Managers.Resource.Instantiate(name + ".prefab", pooling: true);
             go.transform.position = position;
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
             Monsters.Add(mc);
             mc.Init();
+
             return mc as T;
         }
         else if (type == typeof(GemController))
@@ -66,6 +82,22 @@ public class ObjectManager
 
             return pc as T;
         }
+        else if(typeof(T).IsSubclassOf(typeof(SkillBase)))
+        {
+            if(Managers.Data.SkillDic.TryGetValue(templateID, out Data.SkillData skillData) == false)
+            {
+                Debug.LogError($"ObjectManager Spawn Skill Failed {templateID}");
+                return null;
+            }
+
+            GameObject go = Managers.Resource.Instantiate(skillData.prefab, pooling: true);
+            go.transform.position = position;
+
+            T t = go.GetOrAddComponent<T>();
+            t.Init();
+
+            return t;
+        }
         return null;
     }
 
@@ -74,7 +106,7 @@ public class ObjectManager
         //디스포 에러를 한번더 체크함(에러감시용으로 추가)
         if(obj.IsValid() == false)
         {
-            int a = 3;
+            return;
         }
 
         System.Type type = typeof(T);
@@ -99,10 +131,20 @@ public class ObjectManager
             Managers.Resource.Destroy(obj.gameObject);
             GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj.gameObject);
         }
-        else if (type == typeof(ProjectileController))
+        else if (type == typeof(SkillBase))
         {
             Projectiles.Remove(obj as ProjectileController);
             Managers.Resource.Destroy(obj.gameObject);
+        }
+    }
+
+    public void DespawnAllMonsters()
+    {
+        var monsters = Monsters.ToList();
+
+        foreach (var monster in monsters)
+        {
+            Despawn<MonsterController>(monster);
         }
     }
 }

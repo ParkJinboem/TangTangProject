@@ -81,12 +81,6 @@ namespace Data
 		public int attack;
 		[XmlAttribute]
 		public float speed;
-		// DropData
-		// -      Ȯ    
-		// -            (    ,   ų     ,    ,    )
-		// -              ?
-
-
 	}
 
 	#endregion
@@ -109,9 +103,9 @@ namespace Data
 		[XmlAttribute]
 		public int templateID;
 
-		[XmlAttribute(AttributeName = "type")]
-		//public string skillTypeStr;
-		public Define.SkillType skillType = Define.SkillType.None;
+		//[XmlAttribute(AttributeName = "type")]
+		////public string skillTypeStr;
+		//public Define.SkillType skillType = Define.SkillType.None;
 
 		[XmlAttribute]
 		public int nextID;
