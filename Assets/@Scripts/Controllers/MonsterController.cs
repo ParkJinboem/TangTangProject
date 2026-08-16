@@ -156,7 +156,7 @@ public class MonsterController : CreatureController
         }
         _coDotDamage = null;
 
-        //Á×À¸¸é º¸¼® ½ºÆù
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GemController gc = Managers.Object.Spawn<GemController>(transform.position);
         Managers.Object.Despawn(this);
     }

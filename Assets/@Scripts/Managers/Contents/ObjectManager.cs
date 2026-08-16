@@ -11,7 +11,7 @@ public class ObjectManager
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
     public HashSet<GemController> Gems { get; } = new HashSet<GemController>();
 
-    //Å°°ªÀ» ¸Å°³º¯¼ö·Î »ç¿ë
+    //Å°ï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     public T Spawn<T>(Vector3 position, int templateID = 0) where T : BaseController
     {
         System.Type type = typeof(T);
@@ -79,6 +79,7 @@ public class ObjectManager
             ProjectileController pc = go.GetOrAddComponent<ProjectileController>();
             Projectiles.Add(pc);
             pc.Init();
+            Debug.Log("aaaaa");
 
             return pc as T;
         }
@@ -103,7 +104,7 @@ public class ObjectManager
 
     public void Despawn<T>(T obj) where T : BaseController
     {
-        //µð½ºÆ÷ ¿¡·¯¸¦ ÇÑ¹ø´õ Ã¼Å©ÇÔ(¿¡·¯°¨½Ã¿ëÀ¸·Î Ãß°¡)
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½)
         if(obj.IsValid() == false)
         {
             return;

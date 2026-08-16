@@ -7,7 +7,7 @@ public class GameManager
 {
     public PlayerController Player { get { return Managers.Object?.Player; }  }
 
-    #region ÀçÈ­
+    #region ï¿½ï¿½È­
     public int Gold { get; set; }
 
     int _gem = 0;
@@ -23,7 +23,7 @@ public class GameManager
     }
     #endregion
 
-    #region ÀüÅõ
+    #region ï¿½ï¿½ï¿½ï¿½
     int _killcount;
     public event Action<int> OnKillCountChanged;
 
@@ -37,7 +37,7 @@ public class GameManager
     }
     #endregion
 
-    #region ÀÌµ¿
+    #region ï¿½Ìµï¿½
     Vector2 _moveDir;
     public event Action<Vector2> OnMoveDirChanged;
     public Vector2 MoveDir
@@ -46,7 +46,7 @@ public class GameManager
         set
         {
             _moveDir = value;
-            //µ¥ÀÌÅÍ°¡ º¯°æ½Ã È£ÃâµÊ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½
             OnMoveDirChanged?.Invoke(_moveDir);
         }
 

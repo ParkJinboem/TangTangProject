@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using System;
 using Object = UnityEngine.Object;
 
@@ -10,7 +9,7 @@ public class ResourceManager
 {
     Dictionary<string, UnityEngine.Object> _resources = new Dictionary<string, UnityEngine.Object>();
 
-    //Á¦³×¸¯
+    //ï¿½ï¿½ï¿½×¸ï¿½
     public T Load<T>(string key) where T : Object
     {
         if (_resources.TryGetValue(key, out Object resource))
@@ -55,10 +54,10 @@ public class ResourceManager
         Object.Destroy(go);
     }
 
-    #region ¾îµå·¹¼­ºí
+    #region ï¿½ï¿½å·¹ï¿½ï¿½ï¿½ï¿½
     public void LoadAsync<T>(string key, Action<T> callback = null) where T : UnityEngine.Object
     {
-        //Ä³½Ã È®ÀÎ
+        //Ä³ï¿½ï¿½ È®ï¿½ï¿½
         if (_resources.TryGetValue(key, out Object resource))
         {
             callback?.Invoke(resource as T);
@@ -69,7 +68,7 @@ public class ResourceManager
         if (key.Contains(".sprite"))
             loadKey = $"{key}[{key.Replace(".sprite", "")}]";
 
-        //¸®¼Ò½º ºñµ¿±â ·Îµù ½ÃÀÛ
+        //ï¿½ï¿½ï¿½Ò½ï¿½ ï¿½ñµ¿±ï¿½ ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½
         var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
         asyncOperation.Completed += (op) =>
         {
@@ -91,7 +90,7 @@ public class ResourceManager
                 LoadAsync<T>(result.PrimaryKey, (obj) =>
                 {
                     loadCount++;
-                    //Action°ú °ü·ÃµÈ ¸Å°³º¯¼ö
+                    //Actionï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½
                     callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
                 });
             }
